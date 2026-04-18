@@ -1,0 +1,3 @@
+[submodule "RFdiffusion"]
+	path = RFdiffusion
+	url = git@github.com:RosettaCommons/RFdiffusion.git
