@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Activate env before running this script:
+# conda activate SE3nv
+
+SCRIPT=/home/ubuntu/ManviJha/RFdiffusion-9535f1938203a24937d7dadf0cb831d02cb5fc0e/scripts/run_inference.py
+OUTROOT=/home/ubuntu/ManviJha/RFdiffusion-9535f1938203a24937d7dadf0cb831d02cb5fc0e/Generate_designs/
+NUM_DESIGNS=10
+
+# User asked for 90-120 aa. If you want the full assignment challenge, change END_LEN to 128.
+START_LEN=114
+END_LEN=128
+GPU_LIST=(0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7)
+GPU_COUNT=${#GPU_LIST[@]}
+
+run_config () {
+    local config_name="$1"
+    shift
+    local extra_args=("$@")
+
+    local i=0
+
+    for L in $(seq ${START_LEN} ${END_LEN}); do
+        local GPU=${GPU_LIST[$((i % GPU_COUNT))]}
+        local len_tag
+        len_tag=$(printf "%03d" "${L}")
+        local out_prefix="${OUTROOT}/${config_name}/len_${len_tag}/design"
+
+        mkdir -p "$(dirname "${out_prefix}")"
+
+        echo "=================================================="
+        echo "Running config=${config_name}, length=${L}, GPU= ${GPU}"
+        echo "Output prefix: ${out_prefix}"
+        echo "=================================================="
+
+        CUDA_VISIBLE_DEVICES="${GPU}" python ${SCRIPT} \
+          "contigmap.contigs=[${L}-${L}]" \
+          inference.output_prefix="${out_prefix}" \
+          inference.num_designs=${NUM_DESIGNS} \
+          "${extra_args[@]}" &
+        i=$((i+1))
+        if ((i % GPU_COUNT == 0)); then
+            wait
+        fi
+    done
+    wait
+}
+
+# 1) Default
+run_config "default"
+
+# # 2) Low-noise
+# run_config "low_noise" \
+#   denoiser.noise_scale_ca=0.5 \
+#   denoiser.noise_scale_frame=0.5
+
+# # 3) Fast
+# run_config "fast_T20" \
+#   diffuser.T=20
+
+# # 4) Very low-noise
+# run_config "very_low_noise" \
+#   denoiser.noise_scale_ca=0.0 \
+#   denoiser.noise_scale_frame=0.0
+
+# # 5) Medium-fast
+# run_config "medium_fast_T35" \
+#   diffuser.T=35
+
+# # 6) Early-stop
+# run_config "early_stop_f10" \
+#   inference.final_step=10

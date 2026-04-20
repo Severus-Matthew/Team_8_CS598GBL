@@ -1,0 +1,3 @@
+- contigmap.contigs=[104-104]
+- inference.output_prefix=/home/manvi/Team_8_CS598GBL/Assignment/Generate_designs/default/len_104/design
+- inference.num_designs=10
