@@ -1,0 +1,4 @@
+pt_hub_dir: ./.cache/torch/
+pmpnn_dir: ./ProteinMPNN/
+seed: 42
+foldseek_database: /shared/data3/seanlyu2/Team_8_CS598GBL/Assignment/Evaluation/Code/foldseek_database
