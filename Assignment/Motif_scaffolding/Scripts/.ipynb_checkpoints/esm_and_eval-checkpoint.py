@@ -18,7 +18,22 @@ MPNN_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/mpnn_custom90_128_m
 OUT_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/esmfold_eval_custom90_128_motif_scaffolding/low_noise")
 
 NUM_SEQS_PER_TARGET = 1   # set 5/10 if you want evaluate more MPNN samples per backbone
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+if torch.cuda.is_available():
+    NUM_GPUS = torch.cuda.device_count()
+
+    if NUM_GPUS >= 8:
+        print(f"Using 8 GPUs (available: {NUM_GPUS})")
+        DEVICE = "cuda"
+        GPU_IDS = list(range(8))
+    else:
+        print(f"Using all available GPUs: {NUM_GPUS}")
+        DEVICE = "cuda"
+        GPU_IDS = list(range(NUM_GPUS))
+else:
+    print("No CUDA GPUs available")
+    DEVICE = "cpu"
+    GPU_IDS = []
+# DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 def clean_sequence(seq: str) -> str:
@@ -145,7 +160,10 @@ def fold_sequence(model, tokenizer, seq, out_pdb):
     with torch.no_grad():
         outputs = model(**inputs)
 
-    pdb = model.output_to_pdb(outputs)[0]
+    if isinstance(model, torch.nn.DataParallel):
+        pdb = model.module.output_to_pdb(outputs)[0]
+    else:
+        pdb = model.output_to_pdb(outputs)[0]
 
     with open(out_pdb, "w") as f:
         f.write(pdb)
@@ -163,10 +181,18 @@ def main():
     OUT_BASE.mkdir(parents=True, exist_ok=True)
 
     print("Loading ESMFold...")
-    model = EsmForProteinFolding.from_pretrained("facebook/esmfold_v1").to(DEVICE)
+    model = EsmForProteinFolding.from_pretrained("facebook/esmfold_v1")
+    if DEVICE == "cuda" and len(GPU_IDS) > 1:
+        model = torch.nn.DataParallel(model, device_ids=GPU_IDS)
+    
+    model = model.to(DEVICE)
+    # model = EsmForProteinFolding.from_pretrained("facebook/esmfold_v1").to(DEVICE)
     tokenizer = AutoTokenizer.from_pretrained("facebook/esmfold_v1")
     model.eval()
-    model.trunk.set_chunk_size(64)
+    if isinstance(model, torch.nn.DataParallel):
+        model.module.trunk.set_chunk_size(64)
+    else:
+        model.trunk.set_chunk_size(64)
 
     results_by_type = {}
 

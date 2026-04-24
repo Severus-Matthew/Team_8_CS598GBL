@@ -16,7 +16,7 @@ OUTPUT_ROOT="/home/ubuntu/manvi/Team_8_CS598GBL/outputs/mpnn_custom90_128_motif_
 NUM_SEQ=1
 TEMP="0.1"
 
-GPUS=(0 1 2 3)
+GPUS=(0 1 2 3 4 5 6 7)
 TASKS_PER_GPU=3
 MAX_JOBS=$(( ${#GPUS[@]} * TASKS_PER_GPU ))
 
