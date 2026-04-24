@@ -1,5 +1,10 @@
 # Team_8_CS598GBL
 
+## Members
+Manvi Jha, Beiyu Li, Xinxi Lyu
+
+## Usage
+Github Link: https://github.com/Severus-Matthew/Team_8_CS598GBL/tree/blackhole
 To clone use: 
 `git clone --recurse-submodules git@github.com:Severus-Matthew/Team_8_CS598GBL.git`
 
