@@ -10,14 +10,14 @@ PYTHON_BIN="$CONDA_PREFIX/bin/python"
 echo "Using python: $PYTHON_BIN"
 "$PYTHON_BIN" -c "import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.device_count())"
 
-INPUT_ROOT="/home/ubuntu/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffolding/default"
-OUTPUT_ROOT="/home/ubuntu/manvi/Team_8_CS598GBL/outputs/mpnn_custom90_128_motif_scaffolding/default"
+INPUT_ROOT="/home/ubuntu/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffolding/low_noise"
+OUTPUT_ROOT="/home/ubuntu/manvi/Team_8_CS598GBL/outputs/mpnn_custom90_128_motif_scaffolding/low_noise"
 
 NUM_SEQ=1
 TEMP="0.1"
 
 GPUS=(0 1 2 3)
-TASKS_PER_GPU=2
+TASKS_PER_GPU=3
 MAX_JOBS=$(( ${#GPUS[@]} * TASKS_PER_GPU ))
 
 mkdir -p "$OUTPUT_ROOT"

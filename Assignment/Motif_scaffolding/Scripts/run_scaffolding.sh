@@ -9,10 +9,6 @@ export PYTHON_BIN
 echo "Using python: $PYTHON_BIN"
 "$PYTHON_BIN" -c "import sys; print(sys.executable); import torch; print(torch.__version__)"
 
-# Run from RFdiffusion repo root
-# Example:
-# cd /home/manvi/Team_8_CS598GBL/RFdiffusion
-# bash run_motif_batch_8gpu.sh
 
 RF_DIR="/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion"
 INPUT_ROOT="/lambda/nfs/manvi/Team_8_CS598GBL/Assignment/Generate_designs/generated_designs"
@@ -20,8 +16,8 @@ OUT_ROOT="/lambda/nfs/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffoldi
 
 NUM_DESIGNS="${NUM_DESIGNS:-1}"
 
-GPUS=4
-TASKS_PER_GPU=2
+GPUS=8
+TASKS_PER_GPU=3
 TOTAL_WORKERS=$((GPUS * TASKS_PER_GPU))
 
 METHODS=("default" "fast_T20" "low_noise")
@@ -122,7 +118,7 @@ run_one() {
     local out_prefix="${out_dir}/scaffold"
 
     mkdir -p "$out_dir"
-    if ls "${out_prefix}"*.pdb 1> /dev/null 2>&1; then
+    if ls "${out_prefix}"*1.pdb 1> /dev/null 2>&1; then
         echo "[$(date)] SKIPPING (exists) | ${method} len_${len_str} ${cfg}"
         return
     fi

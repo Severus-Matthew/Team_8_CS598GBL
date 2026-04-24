@@ -13,9 +13,9 @@ from Bio.PDB import PDBParser, Superimposer
 from transformers import EsmForProteinFolding, AutoTokenizer
 
 
-BACKBONE_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffolding/default")
-MPNN_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/mpnn_custom90_128_motif_scaffolding/default")
-OUT_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/esmfold_eval_custom90_128_motif_scaffolding/default")
+BACKBONE_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffolding/low_noise")
+MPNN_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/mpnn_custom90_128_motif_scaffolding/low_noise")
+OUT_BASE = Path("/home/ubuntu/manvi/Team_8_CS598GBL/outputs/esmfold_eval_custom90_128_motif_scaffolding/low_noise")
 
 NUM_SEQS_PER_TARGET = 1   # set 5/10 if you want evaluate more MPNN samples per backbone
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
