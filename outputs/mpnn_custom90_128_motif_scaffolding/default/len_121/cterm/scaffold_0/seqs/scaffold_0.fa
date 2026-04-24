@@ -1,0 +1,4 @@
+>scaffold_0, score=2.0649, global_score=2.0649, fixed_chains=[], designed_chains=['A'], model_name=v_48_020, git_hash=8907e6671bfbfc92303b5f79c4b5e6ce47cdef57, seed=119
+GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+>T=0.1, sample=1, score=1.0351, global_score=1.0351, seq_recovery=0.0794
+GTTVTTTTATGPTTTTTTKLAGAGTTKTTTSTTTITTATATTGTTTTTTTTSTTTSTTTTTTP
