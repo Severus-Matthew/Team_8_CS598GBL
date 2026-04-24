@@ -1,9 +1,0 @@
-================================================
-START: Fri Apr 24 08:22:14 UTC 2026
-PDB: /home/ubuntu/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffolding/default/len_090/balanced/scaffold_1.pdb
-GPU: 1
-OUT: /home/ubuntu/manvi/Team_8_CS598GBL/outputs/mpnn_custom90_128_motif_scaffolding/default/len_090/balanced/scaffold_1
-Python: /home/ubuntu/miniforge3/envs/SE3nv/bin/python
-CUDA_VISIBLE_DEVICES=1
-================================================
-Running ProteinMPNN...
