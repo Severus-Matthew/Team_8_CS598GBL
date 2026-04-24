@@ -1,0 +1,31 @@
+/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/_tensor.py:575: UserWarning: floor_divide is deprecated, and will be removed in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values.
+To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor'). (Triggered internally at  /pytorch/aten/src/ATen/native/BinaryOps.cpp:467.)
+  return torch.floor_divide(self, other)
+Traceback (most recent call last):
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/scripts/run_inference.py", line 195, in <module>
+    main()
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/scripts/run_inference.py", line 94, in main
+    px0, x_t, seq_t, plddt = sampler.sample_step(
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/inference/model_runners.py", line 819, in sample_step
+    self._preprocess(seq_init, x_t, t)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/inference/model_runners.py", line 650, in _preprocess
+    t2d = xyz_to_t2d(xyz_t)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/kinematics.py", line 145, in xyz_to_t2d
+    c6d, mask = xyz_to_c6d(xyz_t[:,:,:,:3].view(B*T,L,3,3), params=params)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/kinematics.py", line 119, in xyz_to_c6d
+    c6d[b,i,j,torch.full_like(b,1)] = get_dih(Ca[b,i], Cb[b,i], Cb[b,j], Ca[b,j])
+KeyboardInterrupt

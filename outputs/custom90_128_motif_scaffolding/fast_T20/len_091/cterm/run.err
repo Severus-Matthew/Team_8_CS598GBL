@@ -1,0 +1,63 @@
+/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/_tensor.py:575: UserWarning: floor_divide is deprecated, and will be removed in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values.
+To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor'). (Triggered internally at  /pytorch/aten/src/ATen/native/BinaryOps.cpp:467.)
+  return torch.floor_divide(self, other)
+Traceback (most recent call last):
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/scripts/run_inference.py", line 195, in <module>
+    main()
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/scripts/run_inference.py", line 94, in main
+    px0, x_t, seq_t, plddt = sampler.sample_step(
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/inference/model_runners.py", line 845, in sample_step
+    msa_prev, pair_prev, px0, state_prev, alpha, logits, plddt = self.model(
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/RoseTTAFoldModel.py", line 103, in forward
+    msa, pair, R, T, alpha_s, state = self.simulator(seq, msa_latent, msa_full, pair, xyz[:,:,:3],
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/Track_module.py", line 440, in forward
+    msa, pair, R_in, T_in, state, alpha = self.main_block[i_m](msa, 
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/Track_module.py", line 332, in forward
+    R, T, state, alpha = self.str2str(msa, pair, R_in, T_in, xyz, state, idx, motif_mask=motif_mask, cyclic_reses=cyclic_reses, top_k=0) 
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/cuda/amp/autocast_mode.py", line 141, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/Track_module.py", line 266, in forward
+    shift = self.se3(G, node.reshape(B*L, -1, 1), l1_feats, edge_feats)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/SE3_network.py", line 83, in forward
+    return self.se3(G, node_features, edge_features)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/se3_transformer/model/transformer.py", line 140, in forward
+    basis = basis or get_basis(graph.edata['rel_pos'], max_degree=self.max_degree, compute_gradients=False,
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/se3_transformer/model/basis.py", line 167, in get_basis
+    spherical_harmonics = get_spherical_harmonics(relative_pos, max_degree)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/se3_transformer/model/basis.py", line 58, in get_spherical_harmonics
+    sh = o3.spherical_harmonics(all_degrees, relative_pos, normalize=True)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/e3nn/o3/_spherical_harmonics.py", line 180, in spherical_harmonics
+    return sh(x)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/e3nn/o3/_spherical_harmonics.py", line 80, in forward
+    x = torch.nn.functional.normalize(x, dim=-1)  # forward 0's instead of nan for zero-radius
+  File "/home/ubuntu/miniforge3/envs/SE3nv/lib/python3.9/site-packages/torch/nn/functional.py", line 4428, in normalize
+    denom = input.norm(p, dim, keepdim=True).clamp_min(eps).expand_as(input)
+KeyboardInterrupt
