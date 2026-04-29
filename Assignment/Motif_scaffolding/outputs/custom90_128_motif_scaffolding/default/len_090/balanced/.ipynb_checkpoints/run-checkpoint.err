@@ -1,0 +1,6 @@
+/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/scripts/run_inference.py:63: SyntaxWarning: invalid escape sequence '\d'
+  m = re.match(".*_(\d+)\.pdb$", e)
+Traceback (most recent call last):
+  File "/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/scripts/run_inference.py", line 20, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'

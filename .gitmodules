@@ -1,3 +1,6 @@
 [submodule "RFdiffusion"]
 	path = RFdiffusion
 	url = git@github.com:RosettaCommons/RFdiffusion.git
+[submodule "external/ProteinMPNN"]
+	path = external/ProteinMPNN
+	url = https://github.com/dauparas/ProteinMPNN.git

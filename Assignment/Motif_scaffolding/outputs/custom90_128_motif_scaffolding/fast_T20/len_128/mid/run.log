@@ -1,0 +1,250 @@
+[2026-04-24 09:35:41,690][__main__][INFO] - Found GPU with device_name NVIDIA A100-SXM4-80GB. Will run RFdiffusion on NVIDIA A100-SXM4-80GB
+Reading models from /lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/inference/../../models
+[2026-04-24 09:35:41,692][rfdiffusion.inference.model_runners][INFO] - Reading checkpoint from /lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/inference/../../models/Base_ckpt.pt
+This is inf_conf.ckpt_path
+/lambda/nfs/manvi/Team_8_CS598GBL/RFdiffusion/rfdiffusion/inference/../../models/Base_ckpt.pt
+Assembling -model, -diffuser and -preprocess configs from checkpoint
+USING MODEL CONFIG: self._conf[model][n_extra_block] = 4
+USING MODEL CONFIG: self._conf[model][n_main_block] = 32
+USING MODEL CONFIG: self._conf[model][n_ref_block] = 4
+USING MODEL CONFIG: self._conf[model][d_msa] = 256
+USING MODEL CONFIG: self._conf[model][d_msa_full] = 64
+USING MODEL CONFIG: self._conf[model][d_pair] = 128
+USING MODEL CONFIG: self._conf[model][d_templ] = 64
+USING MODEL CONFIG: self._conf[model][n_head_msa] = 8
+USING MODEL CONFIG: self._conf[model][n_head_pair] = 4
+USING MODEL CONFIG: self._conf[model][n_head_templ] = 4
+USING MODEL CONFIG: self._conf[model][d_hidden] = 32
+USING MODEL CONFIG: self._conf[model][d_hidden_templ] = 32
+USING MODEL CONFIG: self._conf[model][p_drop] = 0.15
+USING MODEL CONFIG: self._conf[model][SE3_param_full] = {'num_layers': 1, 'num_channels': 32, 'num_degrees': 2, 'n_heads': 4, 'div': 4, 'l0_in_features': 8, 'l0_out_features': 8, 'l1_in_features': 3, 'l1_out_features': 2, 'num_edge_features': 32}
+USING MODEL CONFIG: self._conf[model][SE3_param_topk] = {'num_layers': 1, 'num_channels': 32, 'num_degrees': 2, 'n_heads': 4, 'div': 4, 'l0_in_features': 64, 'l0_out_features': 64, 'l1_in_features': 3, 'l1_out_features': 2, 'num_edge_features': 64}
+USING MODEL CONFIG: self._conf[model][freeze_track_motif] = False
+USING MODEL CONFIG: self._conf[model][use_motif_timestep] = True
+USING MODEL CONFIG: self._conf[diffuser][T] = 50
+USING MODEL CONFIG: self._conf[diffuser][b_0] = 0.01
+USING MODEL CONFIG: self._conf[diffuser][b_T] = 0.07
+USING MODEL CONFIG: self._conf[diffuser][schedule_type] = linear
+USING MODEL CONFIG: self._conf[diffuser][so3_type] = igso3
+USING MODEL CONFIG: self._conf[diffuser][crd_scale] = 0.25
+USING MODEL CONFIG: self._conf[diffuser][so3_schedule_type] = linear
+USING MODEL CONFIG: self._conf[diffuser][min_b] = 1.5
+USING MODEL CONFIG: self._conf[diffuser][max_b] = 2.5
+USING MODEL CONFIG: self._conf[diffuser][min_sigma] = 0.02
+USING MODEL CONFIG: self._conf[diffuser][max_sigma] = 1.5
+USING MODEL CONFIG: self._conf[preprocess][sidechain_input] = False
+USING MODEL CONFIG: self._conf[preprocess][motif_sidechain_input] = True
+USING MODEL CONFIG: self._conf[preprocess][d_t1d] = 22
+USING MODEL CONFIG: self._conf[preprocess][d_t2d] = 44
+USING MODEL CONFIG: self._conf[preprocess][prob_self_cond] = 0.5
+USING MODEL CONFIG: self._conf[preprocess][str_self_cond] = True
+USING MODEL CONFIG: self._conf[preprocess][predict_previous] = False
+[2026-04-24 09:36:26,587][rfdiffusion.inference.model_runners][INFO] - Loading checkpoint.
+[2026-04-24 09:36:31,833][rfdiffusion.diffusion][INFO] - Using cached IGSO3.
+Successful diffuser __init__
+[2026-04-24 09:36:31,854][__main__][INFO] - Making design /lambda/nfs/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffolding/fast_T20/len_128/mid/scaffold_0
+[2026-04-24 09:36:31,860][rfdiffusion.inference.model_runners][INFO] - Using contig: ['25-42/A44-83/25-42']
+With this beta schedule (linear schedule, beta_0 = 0.04, beta_T = 0.28), alpha_bar_T = 0.00013696048699785024
+[2026-04-24 09:36:32,006][rfdiffusion.inference.model_runners][INFO] - Sequence init: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:36:40,056][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.36
+[2026-04-24 09:36:40,104][rfdiffusion.inference.model_runners][INFO] - Timestep 50, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:36:46,843][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:36:47,063][rfdiffusion.inference.model_runners][INFO] - Timestep 49, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:36:54,197][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.22
+[2026-04-24 09:36:54,400][rfdiffusion.inference.model_runners][INFO] - Timestep 48, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:00,149][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.21
+[2026-04-24 09:37:00,272][rfdiffusion.inference.model_runners][INFO] - Timestep 47, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:07,222][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:37:07,599][rfdiffusion.inference.model_runners][INFO] - Timestep 46, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:14,593][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:37:14,799][rfdiffusion.inference.model_runners][INFO] - Timestep 45, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:21,027][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.24
+[2026-04-24 09:37:21,248][rfdiffusion.inference.model_runners][INFO] - Timestep 44, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:27,078][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:37:27,372][rfdiffusion.inference.model_runners][INFO] - Timestep 43, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:34,008][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:37:34,150][rfdiffusion.inference.model_runners][INFO] - Timestep 42, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:39,957][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:37:40,444][rfdiffusion.inference.model_runners][INFO] - Timestep 41, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:46,232][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:37:46,472][rfdiffusion.inference.model_runners][INFO] - Timestep 40, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:52,619][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.29
+[2026-04-24 09:37:52,905][rfdiffusion.inference.model_runners][INFO] - Timestep 39, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:37:57,958][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.29
+[2026-04-24 09:37:58,140][rfdiffusion.inference.model_runners][INFO] - Timestep 38, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:04,996][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:38:05,183][rfdiffusion.inference.model_runners][INFO] - Timestep 37, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:10,947][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:38:11,127][rfdiffusion.inference.model_runners][INFO] - Timestep 36, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:16,333][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:38:16,522][rfdiffusion.inference.model_runners][INFO] - Timestep 35, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:22,100][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:38:22,342][rfdiffusion.inference.model_runners][INFO] - Timestep 34, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:27,485][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:38:27,790][rfdiffusion.inference.model_runners][INFO] - Timestep 33, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:32,844][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:38:33,033][rfdiffusion.inference.model_runners][INFO] - Timestep 32, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:39,099][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:38:39,260][rfdiffusion.inference.model_runners][INFO] - Timestep 31, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:46,623][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:38:46,853][rfdiffusion.inference.model_runners][INFO] - Timestep 30, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:51,502][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:38:51,676][rfdiffusion.inference.model_runners][INFO] - Timestep 29, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:38:56,904][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:38:57,106][rfdiffusion.inference.model_runners][INFO] - Timestep 28, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:02,516][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:39:02,883][rfdiffusion.inference.model_runners][INFO] - Timestep 27, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:07,999][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:39:08,176][rfdiffusion.inference.model_runners][INFO] - Timestep 26, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:14,196][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:39:14,384][rfdiffusion.inference.model_runners][INFO] - Timestep 25, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:18,570][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:39:18,872][rfdiffusion.inference.model_runners][INFO] - Timestep 24, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:22,162][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:39:22,396][rfdiffusion.inference.model_runners][INFO] - Timestep 23, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:25,755][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:39:26,024][rfdiffusion.inference.model_runners][INFO] - Timestep 22, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:29,967][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:39:30,244][rfdiffusion.inference.model_runners][INFO] - Timestep 21, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:33,122][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:39:33,547][rfdiffusion.inference.model_runners][INFO] - Timestep 20, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:37,907][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:39:38,217][rfdiffusion.inference.model_runners][INFO] - Timestep 19, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:42,143][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.24
+[2026-04-24 09:39:42,297][rfdiffusion.inference.model_runners][INFO] - Timestep 18, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:46,513][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.24
+[2026-04-24 09:39:46,833][rfdiffusion.inference.model_runners][INFO] - Timestep 17, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:50,205][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:39:50,551][rfdiffusion.inference.model_runners][INFO] - Timestep 16, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:53,998][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:39:54,483][rfdiffusion.inference.model_runners][INFO] - Timestep 15, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:39:58,419][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:39:58,765][rfdiffusion.inference.model_runners][INFO] - Timestep 14, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:02,360][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:40:02,713][rfdiffusion.inference.model_runners][INFO] - Timestep 13, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:05,849][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:40:06,661][rfdiffusion.inference.model_runners][INFO] - Timestep 12, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:10,679][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.29
+[2026-04-24 09:40:10,964][rfdiffusion.inference.model_runners][INFO] - Timestep 11, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:14,187][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:40:14,551][rfdiffusion.inference.model_runners][INFO] - Timestep 10, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:18,687][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:40:18,982][rfdiffusion.inference.model_runners][INFO] - Timestep 9, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:22,269][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.31
+[2026-04-24 09:40:22,593][rfdiffusion.inference.model_runners][INFO] - Timestep 8, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:26,199][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:40:26,381][rfdiffusion.inference.model_runners][INFO] - Timestep 7, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:30,431][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:40:30,590][rfdiffusion.inference.model_runners][INFO] - Timestep 6, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:35,274][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:40:35,634][rfdiffusion.inference.model_runners][INFO] - Timestep 5, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:39,697][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.32
+[2026-04-24 09:40:39,979][rfdiffusion.inference.model_runners][INFO] - Timestep 4, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:43,834][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.31
+[2026-04-24 09:40:44,163][rfdiffusion.inference.model_runners][INFO] - Timestep 3, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:48,241][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:40:48,534][rfdiffusion.inference.model_runners][INFO] - Timestep 2, input to next step: ---------------------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG---------------------------------
+[2026-04-24 09:40:54,223][__main__][INFO] - Finished design in 4.37 minutes
+[2026-04-24 09:40:54,225][__main__][INFO] - Making design /lambda/nfs/manvi/Team_8_CS598GBL/outputs/custom90_128_motif_scaffolding/fast_T20/len_128/mid/scaffold_1
+[2026-04-24 09:40:54,232][rfdiffusion.inference.model_runners][INFO] - Using contig: ['25-42/A44-83/25-42']
+With this beta schedule (linear schedule, beta_0 = 0.04, beta_T = 0.28), alpha_bar_T = 0.00013696048699785024
+[2026-04-24 09:40:54,552][rfdiffusion.inference.model_runners][INFO] - Sequence init: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:40:59,214][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:40:59,652][rfdiffusion.inference.model_runners][INFO] - Timestep 50, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:04,135][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:41:04,709][rfdiffusion.inference.model_runners][INFO] - Timestep 49, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:09,056][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.34
+[2026-04-24 09:41:09,284][rfdiffusion.inference.model_runners][INFO] - Timestep 48, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:12,630][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.33
+[2026-04-24 09:41:12,880][rfdiffusion.inference.model_runners][INFO] - Timestep 47, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:16,799][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:41:17,099][rfdiffusion.inference.model_runners][INFO] - Timestep 46, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:20,040][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:41:20,312][rfdiffusion.inference.model_runners][INFO] - Timestep 45, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:24,133][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:41:24,470][rfdiffusion.inference.model_runners][INFO] - Timestep 44, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:27,957][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:41:28,218][rfdiffusion.inference.model_runners][INFO] - Timestep 43, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:31,501][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:41:31,619][rfdiffusion.inference.model_runners][INFO] - Timestep 42, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:35,368][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.24
+[2026-04-24 09:41:35,665][rfdiffusion.inference.model_runners][INFO] - Timestep 41, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:40,130][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:41:40,565][rfdiffusion.inference.model_runners][INFO] - Timestep 40, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:44,580][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:41:44,810][rfdiffusion.inference.model_runners][INFO] - Timestep 39, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:47,949][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:41:48,168][rfdiffusion.inference.model_runners][INFO] - Timestep 38, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:52,083][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:41:52,316][rfdiffusion.inference.model_runners][INFO] - Timestep 37, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:55,335][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:41:55,526][rfdiffusion.inference.model_runners][INFO] - Timestep 36, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:41:58,901][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.24
+[2026-04-24 09:41:59,097][rfdiffusion.inference.model_runners][INFO] - Timestep 35, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:02,809][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:42:02,885][rfdiffusion.inference.model_runners][INFO] - Timestep 34, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:06,297][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:42:06,392][rfdiffusion.inference.model_runners][INFO] - Timestep 33, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:09,520][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:42:09,620][rfdiffusion.inference.model_runners][INFO] - Timestep 32, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:12,983][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:42:13,072][rfdiffusion.inference.model_runners][INFO] - Timestep 31, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:16,524][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.29
+[2026-04-24 09:42:16,772][rfdiffusion.inference.model_runners][INFO] - Timestep 30, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:20,195][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.28
+[2026-04-24 09:42:20,288][rfdiffusion.inference.model_runners][INFO] - Timestep 29, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:23,479][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.29
+[2026-04-24 09:42:23,828][rfdiffusion.inference.model_runners][INFO] - Timestep 28, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:26,770][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.29
+[2026-04-24 09:42:27,006][rfdiffusion.inference.model_runners][INFO] - Timestep 27, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:29,372][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:42:29,488][rfdiffusion.inference.model_runners][INFO] - Timestep 26, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:32,618][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:42:32,898][rfdiffusion.inference.model_runners][INFO] - Timestep 25, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:35,459][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:42:35,615][rfdiffusion.inference.model_runners][INFO] - Timestep 24, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:38,296][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.31
+[2026-04-24 09:42:38,593][rfdiffusion.inference.model_runners][INFO] - Timestep 23, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:41,529][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.31
+[2026-04-24 09:42:41,855][rfdiffusion.inference.model_runners][INFO] - Timestep 22, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:44,547][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.30
+[2026-04-24 09:42:44,774][rfdiffusion.inference.model_runners][INFO] - Timestep 21, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:47,459][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:42:47,644][rfdiffusion.inference.model_runners][INFO] - Timestep 20, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:50,133][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:42:50,298][rfdiffusion.inference.model_runners][INFO] - Timestep 19, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:52,192][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:42:52,349][rfdiffusion.inference.model_runners][INFO] - Timestep 18, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:53,912][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.27
+[2026-04-24 09:42:54,086][rfdiffusion.inference.model_runners][INFO] - Timestep 17, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:55,888][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:42:56,008][rfdiffusion.inference.model_runners][INFO] - Timestep 16, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:57,748][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:42:57,790][rfdiffusion.inference.model_runners][INFO] - Timestep 15, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:42:59,551][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:42:59,602][rfdiffusion.inference.model_runners][INFO] - Timestep 14, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:00,750][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.26
+[2026-04-24 09:43:00,824][rfdiffusion.inference.model_runners][INFO] - Timestep 13, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:02,303][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:43:02,379][rfdiffusion.inference.model_runners][INFO] - Timestep 12, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:04,088][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.25
+[2026-04-24 09:43:04,198][rfdiffusion.inference.model_runners][INFO] - Timestep 11, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:06,176][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:43:06,239][rfdiffusion.inference.model_runners][INFO] - Timestep 10, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:08,228][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:43:08,319][rfdiffusion.inference.model_runners][INFO] - Timestep 9, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:10,224][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:43:10,329][rfdiffusion.inference.model_runners][INFO] - Timestep 8, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:12,368][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:43:12,479][rfdiffusion.inference.model_runners][INFO] - Timestep 7, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:14,154][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:43:14,223][rfdiffusion.inference.model_runners][INFO] - Timestep 6, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:15,692][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:43:15,744][rfdiffusion.inference.model_runners][INFO] - Timestep 5, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:17,080][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.23
+[2026-04-24 09:43:17,132][rfdiffusion.inference.model_runners][INFO] - Timestep 4, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:18,446][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.22
+[2026-04-24 09:43:18,490][rfdiffusion.inference.model_runners][INFO] - Timestep 3, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:19,840][rfdiffusion.inference.utils][INFO] - Sampled motif RMSD: 0.21
+[2026-04-24 09:43:19,912][rfdiffusion.inference.model_runners][INFO] - Timestep 2, input to next step: ---------------------------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-------------------------------
+[2026-04-24 09:43:22,092][__main__][INFO] - Finished design in 2.46 minutes
