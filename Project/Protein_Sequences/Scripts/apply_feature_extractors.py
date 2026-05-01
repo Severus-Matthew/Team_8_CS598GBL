@@ -6,6 +6,37 @@ import joblib
 import numpy as np
 
 
+def compute_reconstruction_metrics(original_embeddings, reconstructed_embeddings):
+    """
+    Compute reconstruction quality between original embeddings and reconstructed embeddings.
+
+    Both should be in the original embedding space, not scaled space.
+    """
+    diff = original_embeddings - reconstructed_embeddings
+
+    mse = np.mean(diff ** 2)
+
+    fro_error = np.linalg.norm(diff, ord="fro")
+    fro_original = np.linalg.norm(original_embeddings, ord="fro")
+    relative_fro_error = fro_error / (fro_original + 1e-12)
+
+    # Per-sample cosine similarity between original and reconstructed embeddings.
+    numerator = np.sum(original_embeddings * reconstructed_embeddings, axis=1)
+    denominator = (
+        np.linalg.norm(original_embeddings, axis=1)
+        * np.linalg.norm(reconstructed_embeddings, axis=1)
+        + 1e-12
+    )
+    cosine_similarities = numerator / denominator
+    mean_cosine_similarity = np.mean(cosine_similarities)
+
+    return {
+        "reconstruction_mse": mse,
+        "relative_frobenius_error": relative_fro_error,
+        "mean_reconstruction_cosine_similarity": mean_cosine_similarity,
+        "per_sample_reconstruction_cosine_similarity": cosine_similarities,
+    }
+
 def load_embeddings(npz_path, embedding_key):
     data = np.load(npz_path, allow_pickle=True)
 
@@ -62,6 +93,7 @@ def apply_one_model(
     input_embedding_key,
     output_dir,
     split_name,
+    save_reconstruction=False,
 ):
     obj = joblib.load(model_path)
 
@@ -92,20 +124,21 @@ def apply_one_model(
         X = embeddings
 
     if method == "nmf":
-        # Val/test values can fall outside the train min/max range,
-        # so MinMaxScaler may produce small negative values.
-        # NMF requires non-negative inputs, so clip safely.
-        X = np.clip(X, a_min=0.0, a_max=None)
+        num_negative = int(np.sum(X < 0))
+        num_above_one = int(np.sum(X > 1))
+
+        if num_negative > 0 or num_above_one > 0:
+            print(
+                f"NMF clipping warning: found {num_negative} values < 0 and "
+                f"{num_above_one} values > 1 after train-fitted scaling. "
+                "Clipping to [0, 1] before NMF transform."
+            )
+
+        X = np.clip(X, 0.0, 1.0)
 
     features = extractor.transform(X)
 
     print(f"Output feature shape: {features.shape}")
-
-    output_dir = Path(output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    prefix = f"{fitted_embedding_key}_{method}_{n_components}"
-    output_path = output_dir / f"{prefix}_{split_name}_features.npz"
 
     save_dict = {
         "ids": ids,
@@ -117,6 +150,49 @@ def apply_one_model(
         "split": np.array(split_name, dtype=object),
         "fitted_model_path": np.array(str(model_path), dtype=object),
     }
+
+    if method == "nmf":
+        save_dict["nmf_clipped_to_0_1"] = np.array(True)
+        save_dict["nmf_num_values_below_0_before_clipping"] = np.array(num_negative)
+        save_dict["nmf_num_values_above_1_before_clipping"] = np.array(num_above_one)
+
+    # Reconstruction evaluation.
+    if hasattr(extractor, "inverse_transform"):
+        X_reconstructed = extractor.inverse_transform(features)
+
+        if scaler is not None:
+            embeddings_reconstructed = scaler.inverse_transform(X_reconstructed)
+        else:
+            embeddings_reconstructed = X_reconstructed
+
+        metrics = compute_reconstruction_metrics(
+            original_embeddings=embeddings,
+            reconstructed_embeddings=embeddings_reconstructed,
+        )
+
+        for key, value in metrics.items():
+            save_dict[key] = value
+
+        print("Reconstruction MSE:", float(metrics["reconstruction_mse"]))
+        print(
+            "Relative Frobenius error:",
+            float(metrics["relative_frobenius_error"]),
+        )
+        print(
+            "Mean reconstruction cosine similarity:",
+            float(metrics["mean_reconstruction_cosine_similarity"]),
+        )
+
+        if save_reconstruction:
+            save_dict["reconstructed_embeddings"] = embeddings_reconstructed
+    else:
+        print(f"Warning: {method} extractor has no inverse_transform; skipping reconstruction.")
+
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    prefix = f"{fitted_embedding_key}_{method}_{n_components}"
+    output_path = output_dir / f"{prefix}_{split_name}_features.npz"
 
     np.savez_compressed(output_path, **save_dict)
 
@@ -173,6 +249,12 @@ def main():
         help="Name to include in output file, e.g. val, test, inference.",
     )
 
+    parser.add_argument(
+        "--save-reconstruction",
+        action="store_true",
+        help="Save reconstructed embeddings in the output .npz file.",
+    )
+
     args = parser.parse_args()
 
     ids, embeddings = load_embeddings(args.input, args.embedding_key)
@@ -190,6 +272,7 @@ def main():
             input_embedding_key=args.embedding_key,
             output_dir=args.output_dir,
             split_name=args.split_name,
+            save_reconstruction=args.save_reconstruction,
         )
 
 
